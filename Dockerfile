@@ -2,7 +2,8 @@ FROM eclipse-temurin:17
 
 RUN apt-get update && apt-get install -y git &&  \
     apt-get install -y autoconf &&  \
-    apt-get install -y build-essential &&\
+    apt-get install -y gcc &&\
+    apt-get install -y make &&\
     git clone https://github.com/jemalloc/jemalloc.git && \
     cd jemalloc && \
     ./autogen.sh && \
@@ -10,4 +11,6 @@ RUN apt-get update && apt-get install -y git &&  \
     make install && \
     apt-get remove -y git && \
     apt-get remove -y autoconf  && \
-    apt-get autoremove -y build-essential \
+    apt-get remove -y gcc  &&\
+    apt-get remove -y make && \
+    apt-get autoremove -y\
