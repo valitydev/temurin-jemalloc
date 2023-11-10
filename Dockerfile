@@ -13,4 +13,8 @@ RUN apt-get update && apt-get install -y git &&  \
     apt-get remove -y autoconf  && \
     apt-get remove -y gcc  &&\
     apt-get remove -y make && \
-    apt-get autoremove -y\
+    apt-get autoremove -y &&\
+    apt-get clean -y
+
+ENV LD_PRELOAD=/usr/local/lib/libjemalloc.so
+ENV MALLOC_CONF=narenas:1
